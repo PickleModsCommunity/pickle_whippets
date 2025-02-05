@@ -92,7 +92,6 @@ Config.ExternalStatus = function(source, name, amount) -- (Server-Sided) Impleme
         if armor < 0 then armor = 0 end
         if armor > 100 then armor = 100 end
         SetPedArmour(ped, math.floor(armor))
-        print(GetPedArmour(ped), armor)
     end
 end
 
