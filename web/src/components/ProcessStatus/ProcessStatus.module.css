@@ -1,0 +1,16 @@
+.processContainer {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    color: white;
+    padding: 10px;
+    margin-right: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    transition: opacity 0.25s;
+    opacity: 0;
+}

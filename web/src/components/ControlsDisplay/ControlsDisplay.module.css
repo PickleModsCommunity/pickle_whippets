@@ -1,0 +1,16 @@
+.controlContainer {
+    display: flex;
+    gap: 10px; 
+    align-items: center; 
+    color: white; 
+    padding: 10px; 
+    margin-right: 20px; 
+    margin-bottom: 40px; 
+    border-radius: 10px; 
+    position: absolute; 
+    right: 0; 
+    bottom: 0; 
+    background-color: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    transition: opacity 0.25s;
+}
