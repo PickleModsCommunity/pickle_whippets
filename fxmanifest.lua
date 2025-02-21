@@ -44,4 +44,7 @@ escrow_ignore {
 	"bridge/**/*.*",
     "locales/locale.lua",
     "locales/translations/*.lua",
+	-- Comment below if source --
+	"modules/**/*.*",
+	"core/*.*",
 }
