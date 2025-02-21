@@ -94,6 +94,20 @@ function GetItemLabel(item)
     return Inventory.Items[item] and Inventory.Items[item].label or item
 end
 
+function IsPlayerAdmin(source)
+    local xPlayer = QBCore.Functions.GetPlayer(source)
+    local group = xPlayer.PlayerData.permission
+    local job = xPlayer.PlayerData.job.name
+    local grade = xPlayer.PlayerData.job.grade.level
+    if IsPlayerAceAllowed(source, "whippets.admin") then
+        return true
+    end
+    if Config.Admin.jobs[job] and Config.Admin.jobs[job] <= grade then
+        return true
+    end
+    return false
+end
+
 -- Status
 
 local DefaultMax = 100
