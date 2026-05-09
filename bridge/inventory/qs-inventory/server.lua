@@ -13,15 +13,16 @@ end
 Inventory.GetInventory = function(source)
     local items = {}
     local data = exports['qs-inventory']:GetInventory(source)
-    for slot, item in pairs(data) do 
+    for slot, item in pairs(data) do
+        local info = item.info or {}
         items[#items + 1] = {
             name = item.name,
             label = item.label,
             count = item.amount,
             weight = item.weight,
             slot = item.slot,
-            durability = (item.info.quality ~= nil and item.info.quality or 100),
-            metadata = item.info
+            durability = (info.quality ~= nil and info.quality or 100),
+            metadata = info
         }
     end
     return items
@@ -30,7 +31,7 @@ end
 Inventory.AddItem = function(source, name, count, metadata, slot) -- Metadata is not required.
     local data = nil
     if metadata and metadata.durability then
-        data = {quality = metadata.durability * 100}
+        data = {quality = metadata.durability}
     end
     exports['qs-inventory']:AddItem(source, name, count, slot, data)
 end

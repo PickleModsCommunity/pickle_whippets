@@ -9,13 +9,24 @@ end
 function RegisterUsableItem(name, cb)
     ESX.RegisterUsableItem(name, function(source, item, data)
         local durability = Config.DefaultDurability or 100
-        if type(item) == "table" and item.metadata and (item.metadata.durability ~= nil) then
-            durability = item.metadata.durability
+        local slot = nil
+        if type(item) == "table" then
+            if item.metadata and item.metadata.durability ~= nil then
+                durability = item.metadata.durability
+            elseif item.info and item.info.quality ~= nil then
+                durability = item.info.quality
+            end
+            slot = item.slot or slot
         end
-        if type(data) == "table" and data.metadata and (data.metadata.durability ~= nil) then
-            durability = data.metadata.durability
+        if type(data) == "table" then
+            if data.metadata and data.metadata.durability ~= nil then
+                durability = data.metadata.durability
+            elseif data.info and data.info.quality ~= nil then
+                durability = data.info.quality
+            end
+            slot = data.slot or slot
         end
-        cb(source, {durability = durability}, data.slot)
+        cb(source, {durability = durability}, slot)
     end)
 end
 
